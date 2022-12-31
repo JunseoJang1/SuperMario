@@ -1,0 +1,54 @@
+import pygame
+
+from pygame import draw
+from pygame.color import Color
+from pygame.sprite import Sprite
+from pygame.surface import Surface
+
+class Coin(Sprite):
+    def __init__(self):
+        Sprite.__init__(self)
+        self.init_image_change()
+    
+    def init_image_change(self):
+        self.img = pygame.image.load("Blocks\coin.png")
+
+        self.sprite_width = 17
+        self.sprite_height = 21
+        self.sprite_sheet = pygame.image.load("Blocks\coin.png").convert()
+        self.sprite_sheet = pygame.transform.scale(self.img, (17,21))
+        self.current_frame = 0
+        
+        self.image = Surface((self.sprite_width, self.sprite_height))
+
+        rect = (self.sprite_width*self.current_frame, 0,
+                  self.sprite_width, self.sprite_height)
+
+        self.image.blit(self.sprite_sheet, (0,0), rect)
+        self.image.blit( self.sprite_sheet, (0, 0), rect)
+        self.image.set_colorkey(Color(255, 255, 255))
+        self.rect = self.image.get_rect()
+        
+    def image_change(self, img):
+        self.sprite_image = img
+
+        self.sprite_width = 17
+        self.sprite_height = 21
+        self.sprite_sheet = pygame.image.load(self.sprite_image).convert()
+        self.sprite_sheet = pygame.transform.scale(img, (534,535))
+        self.current_frame = 0
+        
+        self.image = Surface((self.sprite_width, self.sprite_height))
+        self.image.set_colorkey(Color(25, 25, 25))
+
+        rect = (self.sprite_width*self.current_frame, 0,
+                  self.sprite_width, self.sprite_height)
+
+        self.image.blit(self.sprite_sheet, (0,0), rect)
+        #self.rect = self.image.get_rect()
+    
+    def update(self):
+        rect = (self.sprite_width*self.current_frame, 0,
+                  self.sprite_width, self.sprite_height)
+        self.image.blit(self.sprite_sheet, (0,0), rect)
+

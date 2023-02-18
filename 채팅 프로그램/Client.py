@@ -34,4 +34,3 @@ while True:
     client_socket.send(msg.encode())
 
 client_socket.close()
-a

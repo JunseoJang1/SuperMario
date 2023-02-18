@@ -1,8 +1,8 @@
 import socket
 from _thread import *
 
-HOST = '127.0.0.1'
-PORT = 9999
+HOST = '192.168.0.20'
+PORT = 8080
 LOGIN = False
 
 client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)

@@ -22,13 +22,12 @@ if LOGIN == False:
     LOGIN = True
     
 while True:
-    message = input('')
-    sender = '[ ' + ID + ' ] : '
+    message = '[ ' + ID + ' ] : ' + input('')
     if message == 'quit':
         close_data = message
         break
 
-    client_socket.send(sender, message.encode())
+    client_socket.send(message.encode())
 
 
 client_socket.close()
